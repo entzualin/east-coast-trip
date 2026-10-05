@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="花東親子五日遊，2026 年 10 月 18–22 日。">
+<meta name="robots" content="noindex">
+<title>花東親子五日遊</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap">
+<style>
+body{margin:0}img{max-width:100%}[hidden]{display:none!important}
+
+/* Layout: one calm reading column; each day is a timeline with a "plan B" box beneath. Palette: Pacific blue + ripening-rice gold. */
+:root{
+  --bg:#f3f6f4; --surface:#ffffff; --ink:#1b292d; --muted:#5a6a6c; --line:#d8e0dc;
+  --sea:#0f5a6c; --sea-soft:#e1eef0; --rice:#946a0f; --rice-soft:#f5ead0;
+  --fw:#1f6b3f; --fw-ink:#ffffff; --pv:#1d4f91; --pv-ink:#ffffff;
+  --warn:#8f4520; --warn-soft:#f6e7dd;
+  --display:"Noto Serif TC","PingFang TC",serif;
+  --body:"Noto Sans TC",system-ui,-apple-system,"PingFang TC",sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0e1618; --surface:#152125; --ink:#e3ebe9; --muted:#9babab; --line:#27373b;
+  --sea:#72c3d6; --sea-soft:#163238; --rice:#e2b551; --rice-soft:#2f2814;
+  --fw:#2f8a55; --fw-ink:#ffffff; --pv:#3a6fb8; --pv-ink:#ffffff;
+  --warn:#eb9e78; --warn-soft:#33231b; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0e1618; --surface:#152125; --ink:#e3ebe9; --muted:#9babab; --line:#27373b;
+  --sea:#72c3d6; --sea-soft:#163238; --rice:#e2b551; --rice-soft:#2f2814;
+  --fw:#2f8a55; --fw-ink:#ffffff; --pv:#3a6fb8; --pv-ink:#ffffff;
+  --warn:#eb9e78; --warn-soft:#33231b; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6}
+.wrap{max-width:780px;margin:0 auto;padding-inline:20px;padding-block:40px 72px;display:grid;gap:40px}
+a{color:var(--sea)}
+a:focus-visible{outline:2px solid var(--sea);outline-offset:2px;border-radius:3px}
+h1,h2,h3{text-wrap:balance;margin:0}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(2rem,6vw,2.9rem);line-height:1.1;color:var(--ink)}
+h2{font-family:var(--display);font-weight:600;font-size:1.5rem;line-height:1.25}
+h3{font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:700}
+p{margin:0}
+.zh{font-family:"Noto Sans TC",var(--body);color:var(--muted);font-size:.88em;font-weight:500}
+
+.top{display:grid;gap:14px}
+.eyebrow{font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--rice);font-weight:700}
+.lede{color:var(--muted);max-width:60ch;font-size:1.05rem}
+.lang{justify-self:start;font-size:.85rem;font-weight:600;text-decoration:none;border:1px solid var(--line);padding:4px 12px;border-radius:999px;background:var(--surface)}
+
+.overview{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px;display:grid;gap:18px}
+.loop{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;font-weight:600}
+.loop .via{font-weight:400;color:var(--muted);font-size:.85rem}
+.nights{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.night{background:var(--sea-soft);border-radius:10px;padding:10px 14px}
+.night b{display:block;color:var(--sea)}
+.night span{font-size:.9rem;color:var(--muted)}
+.daynav{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px}
+.daynav a{display:grid;text-decoration:none;color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:8px 12px;line-height:1.3;height:100%}
+.daynav a:hover{border-color:var(--sea)}
+.daynav small{color:var(--muted);font-size:.78rem}
+.daynav strong{font-size:.92rem}
+.note{font-size:.88rem;color:var(--muted)}
+
+.rt{display:inline-block;font-size:.78rem;font-weight:700;padding:1px 8px;border-radius:5px;line-height:1.6;white-space:nowrap;font-family:"Noto Sans TC",var(--body)}
+.rt.fw{background:var(--fw);color:var(--fw-ink)}
+.rt.pv{background:var(--pv);color:var(--pv-ink)}
+.arrow{color:var(--muted)}
+
+.day{display:grid;gap:16px;scroll-margin-top:16px}
+.dh{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start}
+.dnum{width:58px;height:58px;border-radius:50%;background:var(--sea);color:var(--surface);display:grid;place-items:center;align-content:center;line-height:1}
+.dnum span{font-size:.62rem;text-transform:uppercase;letter-spacing:.1em}
+.dnum b{font-family:var(--display);font-weight:400;font-size:1.6rem}
+.dh > div{display:grid;gap:6px;min-width:0}
+.date{font-weight:700;color:var(--rice);font-size:.85rem;letter-spacing:.04em;text-transform:uppercase}
+.meta{color:var(--muted);font-size:.9rem}
+.routes{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+
+.tl{list-style:none;margin:0;padding:0;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding-inline:18px;padding-block:6px}
+.stop,.leg{display:grid;grid-template-columns:3.6rem 1fr;gap:14px}
+.stop{padding-block:12px;border-top:1px solid var(--line)}
+.tl > .stop:first-child{border-top:0}
+.leg + .stop{border-top:0}
+.t{font-variant-numeric:tabular-nums;font-weight:700;color:var(--sea);padding-top:1px}
+.what{min-width:0;display:grid;gap:3px}
+.what b{font-weight:600}
+.what p{color:var(--muted);font-size:.93rem}
+.leg{padding-block:2px 6px;font-size:.82rem;color:var(--muted)}
+.leg span{grid-column:2;border-left:2px dashed var(--line);padding-left:12px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.tag{display:inline-block;font-size:.66rem;letter-spacing:.07em;text-transform:uppercase;font-weight:700;background:var(--rice-soft);color:var(--rice);padding:1px 8px;border-radius:999px;vertical-align:2px;margin-left:4px}
+.stop.opt .t{color:var(--rice)}
+
+.planb{background:var(--warn-soft);border-radius:12px;padding:14px 18px;display:grid;gap:8px}
+.planb h3{color:var(--warn)}
+.planb ul{margin:0;padding-left:1.1em;display:grid;gap:5px;font-size:.93rem}
+.planb li::marker{color:var(--warn)}
+
+.section{display:grid;gap:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;display:grid;gap:10px}
+.card ul,.card ol{margin:0;padding-left:1.2em;display:grid;gap:6px}
+.tablewrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.92rem;min-width:520px}
+th,td{text-align:left;padding:8px 10px;border-top:1px solid var(--line);vertical-align:top}
+th{font-size:.75rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);border-top:0}
+.good{color:var(--fw);font-weight:700}
+.bad{color:var(--warn);font-weight:700}
+footer{font-size:.85rem;color:var(--muted);border-top:1px solid var(--line);padding-top:16px}
+
+@media (max-width:480px){
+  .wrap{padding-inline:16px}
+  .tl{padding-inline:14px}
+  .stop,.leg{grid-template-columns:3.1rem 1fr;gap:10px}
+  .dnum{width:48px;height:48px}
+}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<main class="wrap">
+
+<header class="top">
+  <a class="lang" href="./">English version</a>
+  <p class="eyebrow">2026 年 10 月 18–22 日 · 五天四夜</p>
+  <h1>花東親子五日遊</h1>
+  <p class="lede">從西部南下，走南迴到臺東，北上經花東縱谷和台11海岸線到花蓮，再經蘇花改、宜蘭回家。全程包車；4 歲小朋友幾乎每天都有機會騎腳踏車。</p>
+</header>
+
+<section class="overview" aria-label="行程總覽">
+  <div class="loop">
+    <span>八德</span><span class="arrow">→</span><span class="via">南迴</span><span class="arrow">→</span>
+    <span>臺東</span><span class="arrow">→</span><span class="via">縱谷</span><span class="arrow">→</span>
+    <span>臺東</span><span class="arrow">→</span><span class="via">台11海岸</span><span class="arrow">→</span>
+    <span>花蓮</span><span class="arrow">→</span><span class="via">蘇花改</span><span class="arrow">→</span><span>八德</span>
+  </div>
+  <div class="nights">
+    <div class="night"><b>10/18（日）、10/19（一）</b><span>臺東市區連住兩晚（同一間飯店）</span></div>
+    <div class="night"><b>10/20（二）、10/21（三）</b><span>花蓮市區連住兩晚（同一間飯店）</span></div>
+  </div>
+  <ul class="daynav">
+    <li><a href="#day1"><small>第 1 天 · 10/18（日）</small><strong>南下臺東</strong></a></li>
+    <li><a href="#day2"><small>第 2 天 · 10/19（一）</small><strong>牧場與稻田</strong></a></li>
+    <li><a href="#day3"><small>第 3 天 · 10/20（二）</small><strong>台11海岸線</strong></a></li>
+    <li><a href="#day4"><small>第 4 天 · 10/21（三）</small><strong>遠雄海洋公園</strong></a></li>
+    <li><a href="#day5"><small>第 5 天 · 10/22（四）</small><strong>經宜蘭回家</strong></a></li>
+  </ul>
+  <p class="note">時間皆為大約估計，車程以正常路況計算。標示 <span class="tag">可選</span> 的是備選景點，看體力決定去不去。路線標示：<span class="rt fw">國3</span> = 國道，<span class="rt pv">台9</span> = 省道。</p>
+</section>
+
+<!-- 第 1 天 -->
+<section class="day" id="day1">
+  <header class="dh">
+    <div class="dnum"><span>Day</span><b>1</b></div>
+    <div>
+      <p class="date">10 月 18 日（星期日）</p>
+      <h2>沿西部南下，走南迴到臺東</h2>
+      <p class="meta">約 430 公里 · 車程約 6 小時（不含停留） · 住：臺東</p>
+      <p class="routes"><span class="rt fw">國3</span><span class="arrow">→</span><span class="rt pv">台17</span><span class="rt pv">台1</span><span class="arrow">→</span><span class="rt pv">台9 南迴</span></p>
+    </div>
+  </header>
+  <ol class="tl">
+    <li class="stop"><span class="t">07:00</span><div class="what"><b>八德出發</b><p>由大溪交流道上國3南下。週日早上南下車流少。</p></div></li>
+    <li class="leg"><span>約 1 小時 45 分 · <span class="rt fw">國3</span></span></li>
+    <li class="stop"><span class="t">08:45</span><div class="what"><b>清水服務區</b><p>早餐、上廁所、伸展。服務區位在山坡上，可眺望臺中港。</p></div></li>
+    <li class="leg"><span>約 1 小時 30 分 · <span class="rt fw">國3</span></span></li>
+    <li class="stop"><span class="t">10:30</span><div class="what"><b>東山服務區</b><p>再讓小朋友下車活動一下。</p></div></li>
+    <li class="leg"><span>約 1 小時 30 分 · <span class="rt fw">國3</span> 至林邊終點，接 <span class="rt pv">台17</span>／<span class="rt pv">台1</span></span></li>
+    <li class="stop"><span class="t">12:00</span><div class="what"><b>枋寮午餐</b><p>枋寮漁港附近海鮮，或簡單便當。這裡是進南迴前最後一個大鎮。</p></div></li>
+    <li class="leg"><span>約 1 小時 15 分 · <span class="rt pv">台1</span> → <span class="rt pv">台9 南迴</span></span></li>
+    <li class="stop"><span class="t">14:15</span><div class="what"><b>多良車站</b><p>緊鄰太平洋的懸崖小站，被稱為臺灣最美車站。從停車處要走一小段陡坡上去。約 20–30 分鐘。</p></div></li>
+    <li class="leg"><span>約 50 分 · <span class="rt pv">台9</span></span></li>
+    <li class="stop"><span class="t">15:30</span><div class="what"><b>臺東市區入住</b><p>長途車程後稍作休息。</p></div></li>
+    <li class="stop"><span class="t">16:15</span><div class="what"><b>臺東糖廠</b><p>老糖廠建築與文創小店，空間不大，小朋友好走。約 1 小時。</p></div></li>
+    <li class="stop"><span class="t">18:00</span><div class="what"><b>臺東觀光夜市</b><p>只在星期日晚上營業，位於正氣路。還有體力的話，可步行到鐵花村看燈籠、聽現場音樂。</p></div></li>
+  </ol>
+  <aside class="planb">
+    <h3>備案</h3>
+    <ul>
+      <li>國3塞車：經 <span class="rt fw">國10</span> 或 <span class="rt fw">國8</span> 等聯絡道改走 <span class="rt fw">國1</span>。</li>
+      <li>抵達較晚：臺東糖廠移到第 2 天早上，剛好順路出城。</li>
+      <li>下雨：糖廠改去國立臺灣史前文化博物館（史前館），室內、適合小孩，週日開放至約 17:00。</li>
+      <li>南迴 <span class="rt pv">台9</span> 封閉（少見，多因颱風）：沒有理想替代道路，改為整個行程反向（見下方「颱風或南迴封閉」）。</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- 第 2 天 -->
+<section class="day" id="day2">
+  <header class="dh">
+    <div class="dnum"><span>Day</span><b>2</b></div>
+    <div>
+      <p class="date">10 月 19 日（星期一）</p>
+      <h2>花東縱谷：牧場、高台草原、金黃稻田</h2>
+      <p class="meta">來回約 130 公里 · 車程約 2.5 小時 · 住：臺東（同一間飯店）</p>
+      <p class="routes"><span class="rt pv">台9</span><span class="arrow">北上，再南下返回</span></p>
+    </div>
+  </header>
+  <ol class="tl">
+    <li class="stop"><span class="t">08:30</span><div class="what"><b>飯店出發</b></div></li>
+    <li class="leg"><span>約 30 分 · <span class="rt pv">台9</span></span></li>
+    <li class="stop"><span class="t">09:00</span><div class="what"><b>初鹿牧場</b><p>餵小牛、在山坡草地奔跑、喝鮮奶吃冰淇淋。趁早去比較涼爽。約 2 小時。</p></div></li>
+    <li class="leg"><span>約 15 分</span></li>
+    <li class="stop"><span class="t">11:15</span><div class="what"><b>鹿野高台</b><p>寬廣草原、縱谷景觀。十月沒有熱氣球嘉年華，但有時可看到飛行傘。約 30–45 分鐘。</p></div></li>
+    <li class="stop"><span class="t">12:00</span><div class="what"><b>鹿野／龍田午餐</b></div></li>
+    <li class="stop opt"><span class="t">13:00</span><div class="what"><b>龍田村單車環村 <span class="tag">可選</span></b><p>平坦安靜的老村落與茶園小路，附近有租車。約 45–60 分鐘。想把體力留給池上就跳過。</p></div></li>
+    <li class="leg"><span>約 40 分 · <span class="rt pv">台9</span> · 適合在車上午睡</span></li>
+    <li class="stop"><span class="t">15:00</span><div class="what"><b>池上伯朗大道騎車</b><p>十月中稻田應已金黃，兩側是山。入口附近車行有兒童腳踏車、兒童座椅和四輪家庭車可租。經過金城武樹。約 1.5–2 小時，傍晚光線最美。</p></div></li>
+    <li class="stop"><span class="t">17:15</span><div class="what"><b>晚餐：池上便當</b><p>來池上一定要吃米飯，在鎮上吃完再回臺東。</p></div></li>
+    <li class="leg"><span>約 1 小時 · <span class="rt pv">台9</span> 南下</span></li>
+    <li class="stop"><span class="t">19:00</span><div class="what"><b>回臺東飯店</b><p>同一間飯店，今晚不用整理行李。</p></div></li>
+  </ol>
+  <aside class="planb">
+    <h3>備案</h3>
+    <ul>
+      <li>小朋友累了：取消龍田，早點到池上慢慢騎。</li>
+      <li>下雨：初鹿牧場小雨仍可去；池上騎車改去室內的池上飯包文化故事館或池上穀倉藝術館。</li>
+      <li>提醒：史前館星期一休館。</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- 第 3 天 -->
+<section class="day" id="day3">
+  <header class="dh">
+    <div class="dnum"><span>Day</span><b>3</b></div>
+    <div>
+      <p class="date">10 月 20 日（星期二）</p>
+      <h2>台11海岸線：臺東到花蓮</h2>
+      <p class="meta">約 180 公里 · 車程約 4 小時（不含停留） · 住：花蓮</p>
+      <p class="routes"><span class="rt pv">台11</span><span class="arrow">全程北上</span></p>
+    </div>
+  </header>
+  <ol class="tl">
+    <li class="stop"><span class="t">08:00</span><div class="what"><b>臺東退房</b></div></li>
+    <li class="leg"><span>約 10 分 · <span class="rt pv">台11</span></span></li>
+    <li class="stop"><span class="t">08:15</span><div class="what"><b>小野柳</b><p>豆腐岩、蜂窩岩等奇特海岸地形，有好走的步道。約 30 分鐘。</p></div></li>
+    <li class="leg"><span>約 10 分</span></li>
+    <li class="stop"><span class="t">09:00</span><div class="what"><b>加路蘭</b><p>海邊草地上的漂流木藝術，拍照跑跳。約 20 分鐘。</p></div></li>
+    <li class="leg"><span>約 10 分</span></li>
+    <li class="stop opt"><span class="t">09:30</span><div class="what"><b>都歷遊客中心 <span class="tag">可選</span></b><p>大草坪、海景、乾淨廁所，適合長程前休息。</p></div></li>
+    <li class="leg"><span>約 45 分 · <span class="rt pv">台11</span></span></li>
+    <li class="stop"><span class="t">10:30</span><div class="what"><b>三仙台</b><p>走八拱跨海步橋到島上。橋上階梯多，可能要抱小朋友走一段。約 1–1.5 小時，記得帶帽子。</p></div></li>
+    <li class="stop"><span class="t">12:00</span><div class="what"><b>成功午餐</b><p>成功漁港附近海鮮，旗魚是當地特色。</p></div></li>
+    <li class="leg"><span>約 15 分</span></li>
+    <li class="stop"><span class="t">13:15</span><div class="what"><b>石雨傘</b><p>傘狀岩石，海岸步道很短。約 30 分鐘。</p></div></li>
+    <li class="leg"><span>約 30 分</span></li>
+    <li class="stop opt"><span class="t">14:15</span><div class="what"><b>長濱金剛大道 <span class="tag">可選</span></b><p>稍微往山邊繞一下，一條筆直道路穿過梯田直通大海。約 30 分鐘。</p></div></li>
+    <li class="leg"><span>約 30 分 · <span class="rt pv">台11</span></span></li>
+    <li class="stop"><span class="t">15:15</span><div class="what"><b>北回歸線標誌（靜浦）</b><p>拍照停留約 10 分鐘。</p></div></li>
+    <li class="stop"><span class="t">15:30</span><div class="what"><b>長虹橋</b><p>秀姑巒溪出海口的紅色拱橋，可看到奚卜蘭島。約 20–30 分鐘。</p></div></li>
+    <li class="leg"><span>約 45 分 · <span class="rt pv">台11</span></span></li>
+    <li class="stop"><span class="t">16:30</span><div class="what"><b>芭崎眺望台</b><p>居高臨下的海灣景觀，海岸線最後一站。約 15 分鐘。</p></div></li>
+    <li class="leg"><span>約 45 分</span></li>
+    <li class="stop"><span class="t">17:30</span><div class="what"><b>花蓮市區入住</b><p>晚餐：東大門夜市。</p></div></li>
+  </ol>
+  <aside class="planb">
+    <h3>備案</h3>
+    <ul>
+      <li><span class="rt pv">台11</span> 部分路段中斷（颱風後坍方或大浪）：就近走橫向公路接 <span class="rt pv">台9</span> 北上花蓮，見下方橫向公路表。優先 <span class="rt pv">台30</span>，避開縣道64。</li>
+      <li>時間不夠：先刪都歷、金剛大道。</li>
+      <li>下雨或強風：海岸線在車上看也很美，縮短停留；風大時不走三仙台步橋。</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- 第 4 天 -->
+<section class="day" id="day4">
+  <header class="dh">
+    <div class="dnum"><span>Day</span><b>4</b></div>
+    <div>
+      <p class="date">10 月 21 日（星期三）</p>
+      <h2>遠雄海洋公園</h2>
+      <p class="meta">花蓮市區單程約 30 分鐘 · 住：花蓮（同一間飯店）</p>
+      <p class="routes"><span class="rt pv">台11</span><span class="arrow">從市區南下，再返回</span></p>
+    </div>
+  </header>
+  <ol class="tl">
+    <li class="stop"><span class="t">09:30</span><div class="what"><b>飯店出發</b></div></li>
+    <li class="leg"><span>約 30 分 · <span class="rt pv">台11</span></span></li>
+    <li class="stop"><span class="t">10:00</span><div class="what"><b>遠雄海洋公園</b><p>入園先看表演時間（海豚、海獅），再安排設施。平日人少很多。前一天確認開放時間。</p></div></li>
+    <li class="stop"><span class="t">16:30</span><div class="what"><b>離園，回飯店休息</b></div></li>
+    <li class="stop opt"><span class="t">17:15</span><div class="what"><b>七星潭 <span class="tag">可選</span></b><p>離市區約 15 分鐘的弧形礫石海灘，丟石頭到海裡是 4 歲小孩的最愛。</p></div></li>
+    <li class="stop"><span class="t">18:30</span><div class="what"><b>花蓮市區晚餐</b><p>第 3 天沒去東大門夜市的話，今晚去。</p></div></li>
+  </ol>
+  <aside class="planb">
+    <h3>備案</h3>
+    <ul>
+      <li>大雨：園內室內水族館區照常開放，但戶外設施和表演可能暫停。市區室內替代：花蓮文化創意產業園區、七星柴魚博物館。</li>
+      <li>想放慢步調：海洋公園玩半天，下午去海邊。</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- 第 5 天 -->
+<section class="day" id="day5">
+  <header class="dh">
+    <div class="dnum"><span>Day</span><b>5</b></div>
+    <div>
+      <p class="date">10 月 22 日（星期四）</p>
+      <h2>經蘇花改、宜蘭回家</h2>
+      <p class="meta">約 230 公里 · 車程約 4 小時（不含停留） · 回家</p>
+      <p class="routes"><span class="rt pv">台9 蘇花改</span><span class="arrow">→</span><span class="rt fw">國5</span><span class="arrow">→</span><span class="rt fw">國3</span></p>
+    </div>
+  </header>
+  <ol class="tl">
+    <li class="stop"><span class="t">08:30</span><div class="what"><b>花蓮退房</b></div></li>
+    <li class="leg"><span>約 25 分，往南</span></li>
+    <li class="stop opt"><span class="t">09:00</span><div class="what"><b>鯉魚潭 <span class="tag">可選</span></b><p>天鵝腳踏船，再沿平坦環潭步道騎車。約 1.5 小時。跳過可提早約 1.5 小時到家。</p></div></li>
+    <li class="leg"><span>約 1 小時 · <span class="rt pv">台9 蘇花改</span></span></li>
+    <li class="stop opt"><span class="t">11:30</span><div class="what"><b>清水斷崖觀景點 <span class="tag">視開放</span></b><p>斷崖直落太平洋。約 15–20 分鐘。2024 年地震後部分區域受影響，請司機確認是否開放。</p></div></li>
+    <li class="leg"><span>約 1 小時 · <span class="rt pv">台9 蘇花改</span></span></li>
+    <li class="stop"><span class="t">12:45</span><div class="what"><b>蘇澳南方澳午餐</b><p>漁港旁新鮮海鮮。</p></div></li>
+    <li class="leg"><span>約 25 分</span></li>
+    <li class="stop"><span class="t">14:00</span><div class="what"><b>梅花湖</b><p>環湖平坦自行車道，湖邊有租車，旅程最後一次騎車。約 1–1.5 小時。</p></div></li>
+    <li class="leg"><span>約 1 小時 45 分 · <span class="rt fw">國5</span> 雪山隧道 → <span class="rt fw">國3</span> → 大溪交流道</span></li>
+    <li class="stop"><span class="t">15:30</span><div class="what"><b>離開宜蘭</b><p>盡量 15:30 前上國5。週四下午北上通常順暢。</p></div></li>
+    <li class="stop"><span class="t">17:15</span><div class="what"><b>回到八德</b></div></li>
+  </ol>
+  <aside class="planb">
+    <h3>備案</h3>
+    <ul>
+      <li>雪隧塞車：改走 <span class="rt pv">台2</span> 濱海公路（頭城 → 福隆 → 基隆），風景好但較遠。避開 <span class="rt pv">台9 北宜公路</span>，彎多，小孩容易暈車。</li>
+      <li>蘇花改封閉（落石或颱風）：家人從花蓮搭台鐵回台北（約 2–2.5 小時），司機待道路恢復再把車開回。改繞臺東走南迴要 7 小時以上。</li>
+      <li>下雨：梅花湖改去頭城蘭陽博物館（順路上國5），或五結國立傳統藝術中心。</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- 全程備案 -->
+<section class="section" id="backups">
+  <h2>全程備案</h2>
+
+  <div class="card">
+    <h3>海岸線橫向公路（第 3 天）</h3>
+    <p class="note"><span class="rt pv">台11</span> 若有路段中斷，就近走橫向公路到 <span class="rt pv">台9</span>，再北上花蓮。</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>道路</th><th>海岸端</th><th>縱谷端</th><th>說明</th></tr></thead>
+        <tbody>
+          <tr><td><span class="rt pv">台30</span> 玉長公路</td><td>長濱</td><td>玉里</td><td><span class="good">首選。</span>有隧道，最穩定。</td></tr>
+          <tr><td><span class="rt pv">台11甲</span> 光豐公路</td><td>豐濱</td><td>光復</td><td>北段的好選擇。</td></tr>
+          <tr><td><span class="rt pv">台23</span> 東富公路</td><td>東河</td><td>富里</td><td>路窄彎多，必要時才走。</td></tr>
+          <tr><td>縣道64 瑞港公路</td><td>靜浦</td><td>瑞穗</td><td><span class="bad">避開。</span>經常封閉。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>颱風或南迴封閉</h3>
+    <p>若出發時有颱風預報，或第 1 天南迴封閉，整個行程反向：</p>
+    <ol>
+      <li>八德 → <span class="rt fw">國3</span>／<span class="rt fw">國5</span> → <span class="rt pv">台9 蘇花改</span> → 花蓮（約 3.5 小時），下午去鯉魚潭。</li>
+      <li>遠雄海洋公園。</li>
+      <li><span class="rt pv">台11</span> 海岸線南下臺東（第 3 天反向）。</li>
+      <li>縱谷：初鹿牧場、鹿野、池上。</li>
+      <li>臺東 → <span class="rt pv">台9 南迴</span> → <span class="rt fw">國3</span> → 八德（約 6 小時）。</li>
+    </ol>
+    <p class="note">颱風較大時，考慮改期。</p>
+  </div>
+
+  <div class="card">
+    <h3>當天需要刪減時</h3>
+    <p>依序先刪：龍田單車 → 都歷 → 金剛大道 → 鯉魚潭 → 清水斷崖。</p>
+  </div>
+
+  <div class="card">
+    <h3>每天出發前確認</h3>
+    <ul>
+      <li>國道路況：<a href="https://1968.freeway.gov.tw" target="_blank" rel="noopener">高速公路 1968</a></li>
+      <li>省道路況（台9、台11、蘇花改）：公路局「省道即時路況」</li>
+      <li>颱風與天氣：<a href="https://www.cwa.gov.tw" target="_blank" rel="noopener">中央氣象署</a></li>
+    </ul>
+  </div>
+</section>
+
+<footer>車程為正常路況估計；開放時間與表演時間可能變動，請前一天確認。</footer>
+</main>
+
+</body>
+</html>

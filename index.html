@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Five-day family road trip to Taitung and Hualien, 18–22 October 2026.">
+<meta name="robots" content="noindex">
+<title>Hualien–Taitung Road Trip</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Figtree:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap">
+<style>
+body{margin:0}img{max-width:100%}[hidden]{display:none!important}
+
+/* Layout: one calm reading column; each day is a timeline with a "plan B" box beneath. Palette: Pacific blue + ripening-rice gold. */
+:root{
+  --bg:#f3f6f4; --surface:#ffffff; --ink:#1b292d; --muted:#5a6a6c; --line:#d8e0dc;
+  --sea:#0f5a6c; --sea-soft:#e1eef0; --rice:#946a0f; --rice-soft:#f5ead0;
+  --fw:#1f6b3f; --fw-ink:#ffffff; --pv:#1d4f91; --pv-ink:#ffffff;
+  --warn:#8f4520; --warn-soft:#f6e7dd;
+  --display:"Young Serif","Noto Sans TC",Georgia,serif;
+  --body:"Figtree","Noto Sans TC",system-ui,-apple-system,"PingFang TC",sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0e1618; --surface:#152125; --ink:#e3ebe9; --muted:#9babab; --line:#27373b;
+  --sea:#72c3d6; --sea-soft:#163238; --rice:#e2b551; --rice-soft:#2f2814;
+  --fw:#2f8a55; --fw-ink:#ffffff; --pv:#3a6fb8; --pv-ink:#ffffff;
+  --warn:#eb9e78; --warn-soft:#33231b; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0e1618; --surface:#152125; --ink:#e3ebe9; --muted:#9babab; --line:#27373b;
+  --sea:#72c3d6; --sea-soft:#163238; --rice:#e2b551; --rice-soft:#2f2814;
+  --fw:#2f8a55; --fw-ink:#ffffff; --pv:#3a6fb8; --pv-ink:#ffffff;
+  --warn:#eb9e78; --warn-soft:#33231b; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6}
+.wrap{max-width:780px;margin:0 auto;padding-inline:20px;padding-block:40px 72px;display:grid;gap:40px}
+a{color:var(--sea)}
+a:focus-visible{outline:2px solid var(--sea);outline-offset:2px;border-radius:3px}
+h1,h2,h3{text-wrap:balance;margin:0}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(2rem,6vw,2.9rem);line-height:1.1;color:var(--ink)}
+h2{font-family:var(--display);font-weight:400;font-size:1.5rem;line-height:1.25}
+h3{font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:700}
+p{margin:0}
+.zh{font-family:"Noto Sans TC",var(--body);color:var(--muted);font-size:.88em;font-weight:500}
+
+.top{display:grid;gap:14px}
+.eyebrow{font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--rice);font-weight:700}
+.lede{color:var(--muted);max-width:60ch;font-size:1.05rem}
+.lang{justify-self:start;font-size:.85rem;font-weight:600;text-decoration:none;border:1px solid var(--line);padding:4px 12px;border-radius:999px;background:var(--surface)}
+
+.overview{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px;display:grid;gap:18px}
+.loop{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;font-weight:600}
+.loop .via{font-weight:400;color:var(--muted);font-size:.85rem}
+.nights{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.night{background:var(--sea-soft);border-radius:10px;padding:10px 14px}
+.night b{display:block;color:var(--sea)}
+.night span{font-size:.9rem;color:var(--muted)}
+.daynav{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px}
+.daynav a{display:grid;text-decoration:none;color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:8px 12px;line-height:1.3;height:100%}
+.daynav a:hover{border-color:var(--sea)}
+.daynav small{color:var(--muted);font-size:.78rem}
+.daynav strong{font-size:.92rem}
+.note{font-size:.88rem;color:var(--muted)}
+
+.rt{display:inline-block;font-size:.78rem;font-weight:700;padding:1px 8px;border-radius:5px;line-height:1.6;white-space:nowrap;font-family:"Noto Sans TC",var(--body)}
+.rt.fw{background:var(--fw);color:var(--fw-ink)}
+.rt.pv{background:var(--pv);color:var(--pv-ink)}
+.arrow{color:var(--muted)}
+
+.day{display:grid;gap:16px;scroll-margin-top:16px}
+.dh{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start}
+.dnum{width:58px;height:58px;border-radius:50%;background:var(--sea);color:var(--surface);display:grid;place-items:center;align-content:center;line-height:1}
+.dnum span{font-size:.62rem;text-transform:uppercase;letter-spacing:.1em}
+.dnum b{font-family:var(--display);font-weight:400;font-size:1.6rem}
+.dh > div{display:grid;gap:6px;min-width:0}
+.date{font-weight:700;color:var(--rice);font-size:.85rem;letter-spacing:.04em;text-transform:uppercase}
+.meta{color:var(--muted);font-size:.9rem}
+.routes{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+
+.tl{list-style:none;margin:0;padding:0;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding-inline:18px;padding-block:6px}
+.stop,.leg{display:grid;grid-template-columns:3.6rem 1fr;gap:14px}
+.stop{padding-block:12px;border-top:1px solid var(--line)}
+.tl > .stop:first-child{border-top:0}
+.leg + .stop{border-top:0}
+.t{font-variant-numeric:tabular-nums;font-weight:700;color:var(--sea);padding-top:1px}
+.what{min-width:0;display:grid;gap:3px}
+.what b{font-weight:600}
+.what p{color:var(--muted);font-size:.93rem}
+.leg{padding-block:2px 6px;font-size:.82rem;color:var(--muted)}
+.leg span{grid-column:2;border-left:2px dashed var(--line);padding-left:12px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.tag{display:inline-block;font-size:.66rem;letter-spacing:.07em;text-transform:uppercase;font-weight:700;background:var(--rice-soft);color:var(--rice);padding:1px 8px;border-radius:999px;vertical-align:2px;margin-left:4px}
+.stop.opt .t{color:var(--rice)}
+
+.planb{background:var(--warn-soft);border-radius:12px;padding:14px 18px;display:grid;gap:8px}
+.planb h3{color:var(--warn)}
+.planb ul{margin:0;padding-left:1.1em;display:grid;gap:5px;font-size:.93rem}
+.planb li::marker{color:var(--warn)}
+
+.section{display:grid;gap:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;display:grid;gap:10px}
+.card ul,.card ol{margin:0;padding-left:1.2em;display:grid;gap:6px}
+.tablewrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.92rem;min-width:520px}
+th,td{text-align:left;padding:8px 10px;border-top:1px solid var(--line);vertical-align:top}
+th{font-size:.75rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);border-top:0}
+.good{color:var(--fw);font-weight:700}
+.bad{color:var(--warn);font-weight:700}
+footer{font-size:.85rem;color:var(--muted);border-top:1px solid var(--line);padding-top:16px}
+
+@media (max-width:480px){
+  .wrap{padding-inline:16px}
+  .tl{padding-inline:14px}
+  .stop,.leg{grid-template-columns:3.1rem 1fr;gap:10px}
+  .dnum{width:48px;height:48px}
+}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style>
+
+</head>
+<body>
+<main class="wrap">
+
+<header class="top">
+  <a class="lang" href="zh.html">中文版</a>
+  <p class="eyebrow">18–22 October 2026 · 5 days, 4 nights</p>
+  <h1>Hualien–Taitung Road Trip</h1>
+  <p class="lede">A family loop down the west side, across the southern mountains to Taitung, up the rice-field valley and the Pacific coast road, then home through Yilan. We have a hired driver, and our 4-year-old gets to bike most days.</p>
+</header>
+
+<section class="overview" aria-label="Trip overview">
+  <div class="loop">
+    <span>Bade 八德</span><span class="arrow">→</span><span class="via">South Link</span><span class="arrow">→</span>
+    <span>Taitung 臺東</span><span class="arrow">→</span><span class="via">rift valley</span><span class="arrow">→</span>
+    <span>Taitung</span><span class="arrow">→</span><span class="via">coast road</span><span class="arrow">→</span>
+    <span>Hualien 花蓮</span><span class="arrow">→</span><span class="via">Su-Hua Hwy</span><span class="arrow">→</span><span>Bade</span>
+  </div>
+  <div class="nights">
+    <div class="night"><b>Sun 18 &amp; Mon 19</b><span>2 nights in Taitung city (same hotel)</span></div>
+    <div class="night"><b>Tue 20 &amp; Wed 21</b><span>2 nights in Hualien city (same hotel)</span></div>
+  </div>
+  <ul class="daynav">
+    <li><a href="#day1"><small>Day 1 · Sun 18</small><strong>Drive south to Taitung</strong></a></li>
+    <li><a href="#day2"><small>Day 2 · Mon 19</small><strong>Ranch &amp; rice fields</strong></a></li>
+    <li><a href="#day3"><small>Day 3 · Tue 20</small><strong>The coast road</strong></a></li>
+    <li><a href="#day4"><small>Day 4 · Wed 21</small><strong>Ocean park</strong></a></li>
+    <li><a href="#day5"><small>Day 5 · Thu 22</small><strong>Home via Yilan</strong></a></li>
+  </ul>
+  <p class="note">All times are rough. Drive times assume normal traffic. Stops marked <span class="tag">Optional</span> are fillers: do them if everyone has energy, and skip them if not. Road numbers: <span class="rt fw">國3</span> = national freeway, <span class="rt pv">台9</span> = provincial highway.</p>
+</section>
+
+<!-- DAY 1 -->
+<section class="day" id="day1">
+  <header class="dh">
+    <div class="dnum"><span>Day</span><b>1</b></div>
+    <div>
+      <p class="date">Sunday 18 October</p>
+      <h2>Down the west side and over the South Link to Taitung</h2>
+      <p class="meta">About 430 km · roughly 6 hours of driving plus stops · Night: Taitung</p>
+      <p class="routes"><span class="rt fw">國3</span><span class="arrow">→</span><span class="rt pv">台17</span><span class="rt pv">台1</span><span class="arrow">→</span><span class="rt pv">台9 南迴</span></p>
+    </div>
+  </header>
+  <ol class="tl">
+    <li class="stop"><span class="t">07:00</span><div class="what"><b>Leave Bade</b><p>Join Freeway 3 southbound at Daxi interchange 大溪交流道. Southbound traffic is light early on a Sunday.</p></div></li>
+    <li class="leg"><span>~1 hr 45 · <span class="rt fw">國3</span></span></li>
+    <li class="stop"><span class="t">08:45</span><div class="what"><b>Qingshui rest stop <span class="zh">清水服務區</span></b><p>Breakfast, toilets, a stretch. It sits on a hill looking out over Taichung harbour.</p></div></li>
+    <li class="leg"><span>~1 hr 30 · <span class="rt fw">國3</span></span></li>
+    <li class="stop"><span class="t">10:30</span><div class="what"><b>Dongshan rest stop <span class="zh">東山服務區</span></b><p>Second wiggle break before the last stretch south.</p></div></li>
+    <li class="leg"><span>~1 hr 30 · <span class="rt fw">國3</span> to the end at Linbian, then <span class="rt pv">台17</span>/<span class="rt pv">台1</span></span></li>
+    <li class="stop"><span class="t">12:00</span><div class="what"><b>Lunch in Fangliao <span class="zh">枋寮</span></b><p>Seafood near the fishing harbour, or a simple lunch box. This is the last big town before the mountain crossing.</p></div></li>
+    <li class="leg"><span>~1 hr 15 · <span class="rt pv">台1</span> → <span class="rt pv">台9 南迴</span></span></li>
+    <li class="stop"><span class="t">14:15</span><div class="what"><b>Duoliang Station <span class="zh">多良車站</span></b><p>An old station on a cliff right above the Pacific, often called Taiwan's prettiest. There's a short, steep walk up from the parking. 20–30 min.</p></div></li>
+    <li class="leg"><span>~50 min · <span class="rt pv">台9</span></span></li>
+    <li class="stop"><span class="t">15:30</span><div class="what"><b>Check in, Taitung city</b><p>A short rest after the long drive.</p></div></li>
+    <li class="stop"><span class="t">16:15</span><div class="what"><b>Taitung Sugar Factory <span class="zh">臺東糖廠</span></b><p>Old sugar-mill buildings with small craft shops and space to wander. Easy for little legs. About 1 hour.</p></div></li>
+    <li class="stop"><span class="t">18:00</span><div class="what"><b>Taitung Tourist Night Market <span class="zh">臺東觀光夜市</span></b><p>Only runs on Sunday nights, on Zhengqi Road 正氣路. Afterwards, if anyone still has energy, it's a short walk to Tiehua Village 鐵花村 for lanterns and live music.</p></div></li>
+  </ol>
+  <aside class="planb">
+    <h3>If plans change</h3>
+    <ul>
+      <li>Freeway 3 slow: switch to Freeway 1 <span class="rt fw">國1</span> using a cross-link such as <span class="rt fw">國10</span> or <span class="rt fw">國8</span>.</li>
+      <li>Arriving late: move the sugar factory to Day 2 morning. It's on the way out of town.</li>
+      <li>Rain: swap the sugar factory for the National Museum of Prehistory <span class="zh">史前館</span>. It's indoors, good with kids, and open on Sundays until about 17:00.</li>
+      <li>South Link <span class="rt pv">台9</span> closed (rare, usually typhoons): there is no good detour. Run the trip in reverse instead (see "Typhoon or South Link closure" below).</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- DAY 2 -->
+<section class="day" id="day2">
+  <header class="dh">
+    <div class="dnum"><span>Day</span><b>2</b></div>
+    <div>
+      <p class="date">Monday 19 October</p>
+      <h2>East Rift Valley: ranch, grassy plateau and golden rice fields</h2>
+      <p class="meta">About 130 km round trip · roughly 2.5 hours of driving · Night: Taitung (same hotel)</p>
+      <p class="routes"><span class="rt pv">台9</span><span class="arrow">north, then south again</span></p>
+    </div>
+  </header>
+  <ol class="tl">
+    <li class="stop"><span class="t">08:30</span><div class="what"><b>Leave hotel</b></div></li>
+    <li class="leg"><span>~30 min · <span class="rt pv">台9</span></span></li>
+    <li class="stop"><span class="t">09:00</span><div class="what"><b>Chulu Ranch <span class="zh">初鹿牧場</span></b><p>Feed the calves, run on the hillside lawns, and have fresh milk and ice cream. Go early, before the day warms up. About 2 hours.</p></div></li>
+    <li class="leg"><span>~15 min</span></li>
+    <li class="stop"><span class="t">11:15</span><div class="what"><b>Luye Highland <span class="zh">鹿野高地</span></b><p>A wide grassy plateau with valley views. The balloon festival is over by October, but paragliders are sometimes flying. 30–45 min.</p></div></li>
+    <li class="stop"><span class="t">12:00</span><div class="what"><b>Lunch in Luye / Longtian <span class="zh">鹿野・龍田</span></b></div></li>
+    <li class="stop opt"><span class="t">13:00</span><div class="what"><b>Longtian village bike loop <span class="zh">龍田村</span> <span class="tag">Optional</span></b><p>Flat, quiet lanes through an old village and tea fields, with rentals nearby. 45–60 min. Skip it to save energy for Chishang.</p></div></li>
+    <li class="leg"><span>~40 min · <span class="rt pv">台9</span> · good nap window</span></li>
+    <li class="stop"><span class="t">15:00</span><div class="what"><b>Bike Mr. Brown Avenue, Chishang <span class="zh">池上 伯朗大道</span></b><p>Straight lanes through rice fields that should be golden in mid-October, with mountains on both sides. Shops at the entrance rent kids' bikes, child seats and 4-wheel family carts. Pass the famous lone tree 金城武樹. 1.5–2 hours; the light is best late afternoon.</p></div></li>
+    <li class="stop"><span class="t">17:15</span><div class="what"><b>Dinner: a Chishang rice lunch box <span class="zh">池上便當</span></b><p>Chishang is famous for its rice. Eat in town before heading back.</p></div></li>
+    <li class="leg"><span>~1 hr · <span class="rt pv">台9</span> south</span></li>
+    <li class="stop"><span class="t">19:00</span><div class="what"><b>Back at the Taitung hotel</b><p>Same hotel, so no packing tonight.</p></div></li>
+  </ol>
+  <aside class="planb">
+    <h3>If plans change</h3>
+    <ul>
+      <li>Tired kid: drop Longtian and get to Chishang earlier for a longer, slower ride.</li>
+      <li>Rain: the ranch is fine in light rain. Swap the Chishang ride for the indoor Chishang Lunchbox Museum <span class="zh">池上飯包文化故事館</span> or the Chishang Granary Art Museum <span class="zh">池上穀倉藝術館</span>.</li>
+      <li>Remember the National Museum of Prehistory is closed on Mondays.</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- DAY 3 -->
+<section class="day" id="day3">
+  <header class="dh">
+    <div class="dnum"><span>Day</span><b>3</b></div>
+    <div>
+      <p class="date">Tuesday 20 October</p>
+      <h2>The coast road from Taitung to Hualien</h2>
+      <p class="meta">About 180 km · roughly 4 hours of driving plus stops · Night: Hualien</p>
+      <p class="routes"><span class="rt pv">台11</span><span class="arrow">north the whole way</span></p>
+    </div>
+  </header>
+  <ol class="tl">
+    <li class="stop"><span class="t">08:00</span><div class="what"><b>Check out, Taitung</b></div></li>
+    <li class="leg"><span>~10 min · <span class="rt pv">台11</span></span></li>
+    <li class="stop"><span class="t">08:15</span><div class="what"><b>Xiaoyeliu <span class="zh">小野柳</span></b><p>Odd tofu-block and honeycomb rocks along the shore, with an easy boardwalk. 30 min.</p></div></li>
+    <li class="leg"><span>~10 min</span></li>
+    <li class="stop"><span class="t">09:00</span><div class="what"><b>Jialulan <span class="zh">加路蘭</span></b><p>Driftwood art on a seaside lawn. A quick photo stop and run-around. 20 min.</p></div></li>
+    <li class="leg"><span>~10 min</span></li>
+    <li class="stop opt"><span class="t">09:30</span><div class="what"><b>Duli visitor center lawn <span class="zh">都歷遊客中心</span> <span class="tag">Optional</span></b><p>A big lawn with a sea view and good toilets. A handy break before the longer stretch.</p></div></li>
+    <li class="leg"><span>~45 min · <span class="rt pv">台11</span></span></li>
+    <li class="stop"><span class="t">10:30</span><div class="what"><b>Sanxiantai <span class="zh">三仙台</span></b><p>Walk the eight-arch footbridge out to the islet. The bridge has a lot of steps, so expect to carry your little one for part of it. 1–1.5 hours. Bring sun hats.</p></div></li>
+    <li class="stop"><span class="t">12:00</span><div class="what"><b>Lunch in Chenggong <span class="zh">成功</span></b><p>Seafood near the fishing harbour. Swordfish 旗魚 is the local catch.</p></div></li>
+    <li class="leg"><span>~15 min</span></li>
+    <li class="stop"><span class="t">13:15</span><div class="what"><b>Stone Umbrella <span class="zh">石雨傘</span></b><p>An umbrella-shaped rock at the end of a short coastal walk. 30 min.</p></div></li>
+    <li class="leg"><span>~30 min</span></li>
+    <li class="stop opt"><span class="t">14:15</span><div class="what"><b>Jingang Avenue, Changbin <span class="zh">長濱 金剛大道</span> <span class="tag">Optional</span></b><p>A short detour inland to a dead-straight road through terraced rice fields that runs down to the sea. 30 min.</p></div></li>
+    <li class="leg"><span>~30 min · <span class="rt pv">台11</span></span></li>
+    <li class="stop"><span class="t">15:15</span><div class="what"><b>Tropic of Cancer marker <span class="zh">北回歸線標誌（靜浦）</span></b><p>A 10-minute photo stop.</p></div></li>
+    <li class="stop"><span class="t">15:30</span><div class="what"><b>Changhong Bridge <span class="zh">長虹橋</span></b><p>A red arch bridge at the mouth of the Xiuguluan River, looking out to a small island. 20–30 min.</p></div></li>
+    <li class="leg"><span>~45 min · <span class="rt pv">台11</span></span></li>
+    <li class="stop"><span class="t">16:30</span><div class="what"><b>Baqi Lookout <span class="zh">芭崎眺望台</span></b><p>A clifftop view over a sweeping bay, and the last coastal stop. 15 min.</p></div></li>
+    <li class="leg"><span>~45 min</span></li>
+    <li class="stop"><span class="t">17:30</span><div class="what"><b>Check in, Hualien city</b><p>Dinner at Dongdamen Night Market <span class="zh">東大門夜市</span>.</p></div></li>
+  </ol>
+  <aside class="planb">
+    <h3>If plans change</h3>
+    <ul>
+      <li>Part of <span class="rt pv">台11</span> closed (landslides or high waves after a typhoon): cut inland on the nearest crossover and carry on north on <span class="rt pv">台9</span> to Hualien. See the crossover table below. Prefer <span class="rt pv">台30</span>, and avoid County Road 64.</li>
+      <li>Running late: skip Duli and Jingang Avenue first.</li>
+      <li>Rain or strong wind: the coast still looks great from the car. Shorten the stops and skip the Sanxiantai bridge in heavy wind.</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- DAY 4 -->
+<section class="day" id="day4">
+  <header class="dh">
+    <div class="dnum"><span>Day</span><b>4</b></div>
+    <div>
+      <p class="date">Wednesday 21 October</p>
+      <h2>Farglory Ocean Park</h2>
+      <p class="meta">About 30 min each way from Hualien city · Night: Hualien (same hotel)</p>
+      <p class="routes"><span class="rt pv">台11</span><span class="arrow">south from the city, and back</span></p>
+    </div>
+  </header>
+  <ol class="tl">
+    <li class="stop"><span class="t">09:30</span><div class="what"><b>Leave hotel</b></div></li>
+    <li class="leg"><span>~30 min · <span class="rt pv">台11</span></span></li>
+    <li class="stop"><span class="t">10:00</span><div class="what"><b>Farglory Ocean Park <span class="zh">遠雄海洋公園</span></b><p>Check the show times (dolphins, sea lions) at the gate and plan rides around them. It's much quieter on a weekday. Check opening hours the day before.</p></div></li>
+    <li class="stop"><span class="t">16:30</span><div class="what"><b>Leave the park, rest at the hotel</b></div></li>
+    <li class="stop opt"><span class="t">17:15</span><div class="what"><b>Qixingtan beach <span class="zh">七星潭</span> <span class="tag">Optional</span></b><p>A crescent pebble beach 15 min from the city. Throwing stones into the sea is great fun for a 4-year-old.</p></div></li>
+    <li class="stop"><span class="t">18:30</span><div class="what"><b>Dinner in Hualien city</b><p>Dongdamen Night Market if you skipped it on Day 3.</p></div></li>
+  </ol>
+  <aside class="planb">
+    <h3>If plans change</h3>
+    <ul>
+      <li>Heavy rain: the park's indoor aquarium areas stay open, but outdoor rides and shows may stop. Indoor alternatives in town include the Hualien Cultural &amp; Creative Park <span class="zh">花蓮文化創意產業園區</span> and the Qixing Bonito Museum <span class="zh">七星柴魚博物館</span>.</li>
+      <li>Want a slower day: do half a day at the park and spend the afternoon at the beach.</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- DAY 5 -->
+<section class="day" id="day5">
+  <header class="dh">
+    <div class="dnum"><span>Day</span><b>5</b></div>
+    <div>
+      <p class="date">Thursday 22 October</p>
+      <h2>Home via the Su-Hua Highway and Yilan</h2>
+      <p class="meta">About 230 km · roughly 4 hours of driving plus stops · Home</p>
+      <p class="routes"><span class="rt pv">台9 蘇花改</span><span class="arrow">→</span><span class="rt fw">國5</span><span class="arrow">→</span><span class="rt fw">國3</span></p>
+    </div>
+  </header>
+  <ol class="tl">
+    <li class="stop"><span class="t">08:30</span><div class="what"><b>Check out, Hualien</b></div></li>
+    <li class="leg"><span>~25 min south</span></li>
+    <li class="stop opt"><span class="t">09:00</span><div class="what"><b>Liyu Lake <span class="zh">鯉魚潭</span> <span class="tag">Optional</span></b><p>Swan pedal boats, then a ride on the flat lakeside path. 1.5 hours. Skip it to get home about 1.5 hours earlier.</p></div></li>
+    <li class="leg"><span>~1 hr · <span class="rt pv">台9 蘇花改</span></span></li>
+    <li class="stop opt"><span class="t">11:30</span><div class="what"><b>Qingshui Cliffs viewpoint <span class="zh">清水斷崖</span> <span class="tag">If open</span></b><p>Sheer cliffs dropping straight into the Pacific. 15–20 min. Ask the driver whether it's open, because the area was affected by the 2024 earthquake.</p></div></li>
+    <li class="leg"><span>~1 hr · <span class="rt pv">台9 蘇花改</span></span></li>
+    <li class="stop"><span class="t">12:45</span><div class="what"><b>Lunch at Nanfang'ao harbour, Su'ao <span class="zh">蘇澳 南方澳</span></b><p>Fresh seafood by the fishing port.</p></div></li>
+    <li class="leg"><span>~25 min</span></li>
+    <li class="stop"><span class="t">14:00</span><div class="what"><b>Meihua Lake <span class="zh">梅花湖</span></b><p>A flat bike loop around a small lake, with rentals at the lake. A good last ride. 1–1.5 hours.</p></div></li>
+    <li class="leg"><span>~1 hr 45 · <span class="rt fw">國5</span> via the Hsuehshan Tunnel → <span class="rt fw">國3</span> → Daxi interchange</span></li>
+    <li class="stop"><span class="t">15:30</span><div class="what"><b>Leave Yilan</b><p>Aim to be on Freeway 5 by about 15:30. Thursday afternoon northbound is usually smooth.</p></div></li>
+    <li class="stop"><span class="t">17:15</span><div class="what"><b>Home in Bade</b></div></li>
+  </ol>
+  <aside class="planb">
+    <h3>If plans change</h3>
+    <ul>
+      <li>Hsuehshan Tunnel jammed: take the coastal road <span class="rt pv">台2</span> via Toucheng → Fulong → Keelung (scenic, but longer). Avoid <span class="rt pv">台9 北宜公路</span>: it's very twisty and bad for carsick kids.</li>
+      <li>Su-Hua Highway closed (rockfall or typhoon): the family takes the train from Hualien to Taipei (about 2–2.5 hrs) and the driver brings the car back once the road reopens. Driving back the long way through Taitung takes 7+ hours.</li>
+      <li>Rain: swap Meihua Lake for the Lanyang Museum <span class="zh">蘭陽博物館</span> in Toucheng, which is on the way to the freeway, or the National Center for Traditional Arts <span class="zh">傳藝中心</span> in Wujie.</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- BACKUPS -->
+<section class="section" id="backups">
+  <h2>Backups for the whole trip</h2>
+
+  <div class="card">
+    <h3>Coast road crossovers (Day 3)</h3>
+    <p class="note">If a section of the coast road <span class="rt pv">台11</span> is closed, use the nearest crossover to reach the valley road <span class="rt pv">台9</span>, then continue north to Hualien.</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Road</th><th>Coast end</th><th>Valley end</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td><span class="rt pv">台30</span> 玉長公路</td><td>Changbin 長濱</td><td>Yuli 玉里</td><td><span class="good">First choice.</span> Has a tunnel and is the most reliable.</td></tr>
+          <tr><td><span class="rt pv">台11甲</span> 光豐公路</td><td>Fengbin 豐濱</td><td>Guangfu 光復</td><td>Good option for the northern section.</td></tr>
+          <tr><td><span class="rt pv">台23</span> 東富公路</td><td>Donghe 東河</td><td>Fuli 富里</td><td>Narrow and winding. Only if needed.</td></tr>
+          <tr><td>縣道64 瑞港公路</td><td>Jingpu 靜浦</td><td>Ruisui 瑞穗</td><td><span class="bad">Avoid.</span> Often closed.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Typhoon or South Link closure</h3>
+    <p>If a typhoon is forecast for the start of the trip or the South Link is closed on Day 1, run the loop in reverse:</p>
+    <ol>
+      <li>Bade → <span class="rt fw">國3</span>/<span class="rt fw">國5</span> → <span class="rt pv">台9 蘇花改</span> → Hualien (about 3.5 hrs). Liyu Lake in the afternoon.</li>
+      <li>Farglory Ocean Park.</li>
+      <li>Coast road <span class="rt pv">台11</span> south to Taitung (Day 3 in reverse).</li>
+      <li>Rift valley day: Chulu Ranch, Luye, Chishang.</li>
+      <li>Taitung → <span class="rt pv">台9 南迴</span> → <span class="rt fw">國3</span> → Bade (about 6 hrs).</li>
+    </ol>
+    <p class="note">If the typhoon is a big one, it may be better to move the dates.</p>
+  </div>
+
+  <div class="card">
+    <h3>If we need to cut things on the day</h3>
+    <p>Drop these first, in this order: Longtian bike loop → Duli lawn → Jingang Avenue → Liyu Lake → Qingshui Cliffs.</p>
+  </div>
+
+  <div class="card">
+    <h3>Check before each day</h3>
+    <ul>
+      <li>Freeway traffic: <a href="https://1968.freeway.gov.tw" target="_blank" rel="noopener">1968.freeway.gov.tw</a> (高速公路 1968)</li>
+      <li>Provincial roads (台9, 台11, 蘇花改): 公路局「省道即時路況」. The driver will know it.</li>
+      <li>Typhoon and weather: Central Weather Administration <a href="https://www.cwa.gov.tw" target="_blank" rel="noopener">cwa.gov.tw</a></li>
+    </ul>
+  </div>
+</section>
+
+<footer>Drive times are estimates for normal traffic. Opening hours and show times change, so check them the day before.</footer>
+</main>
+
+</body>
+</html>
